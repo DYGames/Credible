@@ -7,10 +7,4 @@
         <item name="neumorph_cornerSizeTopLeft">64dp</item>
         <item name="neumorph_cornerSizeTopRight">64dp</item>
     </style>
-
-    <style name="NeumorphNoActionBar" parent="Base.Theme.Neumorph.Light">
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-    </style>
 </resources>
