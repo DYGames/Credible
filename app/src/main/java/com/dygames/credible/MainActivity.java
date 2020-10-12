@@ -36,15 +36,15 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.record_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //getSupportFragmentManager().beginTransaction().add(R.id.frameLayout, new CameraFragment()).addToBackStack(null).commitAllowingStateLoss();
-                startActivityForResult(new Intent("android.media.action.VIDEO_CAPTURE"), 7);
+                getSupportFragmentManager().beginTransaction().add(R.id.frameLayout, new CameraFragment()).addToBackStack(null).commitAllowingStateLoss();
+                //startActivityForResult(new Intent("android.media.action.VIDEO_CAPTURE"), 7);
             }
         });
         findViewById(R.id.camera_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent("android.media.action.IMAGE_CAPTURE"), 7);
+                getSupportFragmentManager().beginTransaction().add(R.id.frameLayout, new CameraFragment()).addToBackStack(null).commitAllowingStateLoss();
+                //startActivityForResult(new Intent("android.media.action.IMAGE_CAPTURE"), 7);
             }
         });
         findViewById(R.id.browser_button).setOnClickListener(new View.OnClickListener() {
