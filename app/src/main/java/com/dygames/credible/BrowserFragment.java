@@ -47,13 +47,13 @@ public class BrowserFragment extends Fragment {
         File[] files = file.listFiles();
         BrowserAdapter.Data[] data = new BrowserAdapter.Data[files.length];
 
-
         for (int i = 0; i < files.length; i++) {
-            Log.d("CreateDir", files[i].getPath());
             data[i] = new BrowserAdapter.Data(files[i].getName(), BitmapFactory.decodeFile(files[i].getPath()));
         }
 
         recyclerView.setAdapter(new BrowserAdapter(data));
+
+
         return rootView;
     }
 }

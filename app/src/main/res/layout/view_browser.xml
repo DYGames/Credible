@@ -8,18 +8,18 @@
 
     <ImageView
         android:id="@+id/browser_thumbnail"
-        android:layout_width="200dp"
+        android:layout_width="175dp"
         android:layout_height="200dp"
         android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/browser_text"
-        android:layout_width="200dp"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:gravity="center"
         android:textColor="@android:color/white"
-        android:textSize="20sp" />
+        android:textSize="10sp" />
 
 
 </androidx.cardview.widget.CardView>
