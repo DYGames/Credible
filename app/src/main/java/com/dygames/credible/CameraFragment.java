@@ -25,6 +25,7 @@ import android.media.Image;
 import android.media.ImageReader;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -128,7 +129,11 @@ public class CameraFragment extends Fragment {
                     Date date = new Date();
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss");
 
-                    final File file = new File(Environment.getExternalStorageDirectory() + "/Credible/Image", "pic_" + dateFormat.format(date) + ".jpg");
+                    final File file;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+                        file = new File(getContext().getExternalFilesDir(null), "Credible" + File.separator + "Photo" + File.separator + "pic_" + dateFormat.format(date) + ".jpg");
+                    else
+                        file = new File(Environment.getExternalStorageState(), "Credible" + File.separator + "Photo" + File.separator + "pic_" + dateFormat.format(date) + ".jpg");
 
                     ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener() {
                         @Override
