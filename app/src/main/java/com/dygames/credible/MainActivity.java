@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ActivityCompat.requestPermissions(MainActivity.this,
-                new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE},
+                new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO},
                 7);
 
         String[] paths = new String[]{"Credible", "Credible" + File.separator + "Photo", "Credible" + File.separator + "Video", "Credible" + File.separator + "Voice"};
@@ -55,12 +55,14 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.record_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cameraFragment.isPhoto = false;
                 getSupportFragmentManager().beginTransaction().add(R.id.frameLayout, cameraFragment).addToBackStack(null).commitAllowingStateLoss();
             }
         });
         findViewById(R.id.camera_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cameraFragment.isPhoto = true;
                 getSupportFragmentManager().beginTransaction().add(R.id.frameLayout, cameraFragment).addToBackStack(null).commitAllowingStateLoss();
             }
         });
