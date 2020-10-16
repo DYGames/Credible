@@ -32,13 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
         String[] paths = new String[]{"Credible", "Credible" + File.separator + "Photo", "Credible" + File.separator + "Video", "Credible" + File.separator + "Voice"};
         File dir;
-        for (int i = 0; i < paths.length; i++) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
-                dir = new File(getApplicationContext().getExternalFilesDir(null), paths[i]);
-            else
-                dir = new File(Environment.getExternalStorageState(), paths[i]);
-            dir.mkdir();
-        }
+        for (int i = 0; i < paths.length; i++)
+
+
+
 
         findViewById(R.id.mic_button).setOnClickListener(new View.OnClickListener() {
             @Override
