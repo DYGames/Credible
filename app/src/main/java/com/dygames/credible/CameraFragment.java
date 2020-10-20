@@ -32,6 +32,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
@@ -44,6 +45,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
@@ -63,6 +65,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.Semaphore;
+
+/*
+*블록체인의 개념 원리, 모바일에서 용량이 작은데 어떻게 이용할건가
+
+블록체인과 안드로이드 앱을 이용하여 어떻게 조작 불가능한 자료를 만드는가?
+앱 구동 원리
+기능,
+* */
 
 public class CameraFragment extends Fragment {
     public boolean isPhoto;
@@ -422,6 +432,14 @@ public class CameraFragment extends Fragment {
                 StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
 
                 mVideoSize = chooseVideoSize(map.getOutputSizes(MediaRecorder.class));
+                DisplayMetrics metrics = getResources().getDisplayMetrics();
+                float ratio = metrics.widthPixels / mVideoSize.getWidth();
+                ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams((int) (mVideoSize.getWidth() * ratio), (int) (mVideoSize.getHeight() * ratio));
+                layoutParams.leftToLeft = R.id.camera_fragment;
+                layoutParams.rightToRight = R.id.camera_fragment;
+                layoutParams.topToTop = R.id.camera_fragment;
+                layoutParams.bottomToBottom = R.id.camera_fragment;
+                ((TextureView) getActivity().findViewById(R.id.cameraTextureView)).setLayoutParams(layoutParams);
                 mPreviewSize = map.getOutputSizes(SurfaceTexture.class)[0];
                 mMediaRecorder = new MediaRecorder();
                 mSensorOrientation = characteristics.get(CameraCharacteristics.SENSOR_ORIENTATION);
